@@ -18,8 +18,10 @@
   },
   "homepage": "https://github.com/mnnaegel/algo-racer#readme",
   "dependencies": {
+    "axios": "^0.24.0",
     "express": "^4.17.2",
     "mongoose": "^6.1.6",
+    "react-router-dom": "^6.2.1",
     "socket.io": "^4.4.1"
   }
 }
