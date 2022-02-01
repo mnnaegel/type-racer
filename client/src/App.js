@@ -4,6 +4,7 @@ import history from './history';
 import GameMenu from './components/GameMenu';
 import CreateGame from './components/createGame';
 import JoinGame from './components/JoinGame'
+import TypeRacer from './components/TypeRacer'
 import socket from './socketConfig'
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
           <Route path="/" exact component={GameMenu} />
           <Route path="/game/create" component={CreateGame} />
           <Route path="/game/join" component={JoinGame} />
+          <Route path="/game/:gameID" render={props=><TypeRacer {...props} gameState={gameState}/>} />
         </Switch>
       </Router>   
     </div>
