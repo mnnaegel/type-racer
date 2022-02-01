@@ -110,9 +110,8 @@ io.on('connect',(socket)=>{
 
 const startGameClock = async (gameID) => {
     let game = await Game.findById(gameID)
-    game.startTime = 5
-    game = await game.save()
-    console.log(game)
+    let startTime = new Date().getTime()
+    game = await game.save()    
     let time = 5
     let timerID = setInterval(function gameIntervalFunc(){
         if(time>=0){
@@ -124,15 +123,13 @@ const startGameClock = async (gameID) => {
             (async ()=>{
                 let endTime = new Date().getTime()
                 let game = await Game.findById(gameID)
-                let {startTime} = game
+                console.log(startTime)
                 game.isOver = true;
                 game.players.forEach((player,index)=>{
                     if(player.WPM === -1){
                         // console.log(player)
                         // console.log(endTime)
-                        // console.log(game)
                         // console.log(game.startTime)
-                        console.log(calculateWPM(endTime,startTime,player))
                         game.players[index].WPM=calculateWPM(endTime,startTime,player)
                     }
                 })
@@ -152,9 +149,11 @@ const calculateTime = (time)=>{
 }
 
 const calculateWPM = (endTime,startTime,player) => {
+    console.log(endTime,startTime,player)
     let numOfWords = player.currentWordIndex
     const timeInSeconds = (endTime-startTime)/1000
     const timeInMinutes = timeInSeconds / 60
+    
     const WPM = Math.floor(numOfWords/timeInMinutes)
     return WPM
 }
