@@ -4,6 +4,7 @@ import CountDown from './CountDown'
 import StartBtn from './StartBtn'
 import socket from '../socketConfig'
 import DisplayWords from './DisplayWords'
+import ProgressBar from './ProgressBar'
 import Form from './Form'
 
 const findPlayers = players => {
@@ -19,6 +20,7 @@ const TypeRacer = ({gameState}) => {
     return (
         <div className="text-center">
             <DisplayWords words={words} player={player} />
+            <ProgressBar players={players} player={player} wordsLength={words.length}/>
             <Form isOpen={isOpen} isOver={isOver} gameID={_id}/>
             <CountDown />
             <StartBtn player={player} gameID={_id} />
