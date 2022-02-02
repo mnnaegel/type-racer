@@ -7,6 +7,7 @@ import DisplayWords from './DisplayWords'
 import ProgressBar from './ProgressBar'
 import Form from './Form'
 import ScoreBoard from './ScoreBoard'
+import DisplayGameCode from './DisplayGameCode'
 
 const findPlayers = players => {
     return players.find(player => player.socketID===socket.id)
@@ -25,6 +26,7 @@ const TypeRacer = ({gameState}) => {
             <Form isOpen={isOpen} isOver={isOver} gameID={_id}/>
             <CountDown />
             <StartBtn player={player} gameID={_id} />
+            <DisplayGameCode gameID={_id}/>
             <ScoreBoard players={players}/>
         </div>
     )

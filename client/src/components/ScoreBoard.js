@@ -24,7 +24,7 @@ const ScoreBoard = ({players}) => {
                     scoreBoard.map((player,index)=>{
                         return <tr>
                             <th scope="row">{index+1}</th>
-                            <td>{player.nickname}</td>
+                            <td>{player.nickName}</td>
                             <td>{player.WPM}</td>
                         </tr>
                     })
